@@ -8,10 +8,10 @@ public class PlayerController : MonoBehaviour
     //public variable of the float class
     public float speed;
 
-    // public variable of the float class for the min and max values in which the object can fly
+    //controls bounds for the x axis 
     public float maxX, minX;
 
-    // public variable of the float class for the min and max values in which the object can fly
+    //controls bounds for the y axis 
     public float maxY, minY;
 
     //the Laser GameObject to clone when firing
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
             //x position will be equal to the ship's
             x = transform.position.x;
 
-            //y postion will be +0.5 because we want it to cpawn right in front of the ship. It's 0.5f because you need to tell Unity that this number is a floating value(decimal)
+            //y postion will be +0.5 because we want it to spawn right in front of the ship. It's 0.5f because you need to tell Unity that this number is a floating value(decimal)
             y = transform.position.y + 0.5f;
 
             //setting the newLaser's position equal to the x and y values specified above
@@ -127,6 +127,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-
     
+
 }

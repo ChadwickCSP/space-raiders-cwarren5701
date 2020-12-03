@@ -7,8 +7,9 @@ public class LaserController : MonoBehaviour
     //specifies how fast the laser moves
     public float speed;
 
-    //specifies how far off the screen the laser can be before its destroyed
+    //controls bounds for the y axis 
     public float maxY, minY;
+
     // Start is called before the first frame update
     void Start()
     {
