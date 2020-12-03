@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    //This is the laser to spawn
+    public EnemyController laser;
+
+    //this is the speed at which lasers will be fired
+    public float fireRate;
+
+    //This is the last time a laser was fired
+    public float lastShot;
+
+    //This is the speed of the laser that the enemy fires
+    public float laserSpeed;
+
     //controls bounds for the x axis 
     public float speedX, speedY;
 
@@ -24,6 +36,8 @@ public class EnemyController : MonoBehaviour
     {
         //when update method occurs, it with run moveEnemy method as well
         moveEnemy();
+
+        checkFireLaser();
     }
 
     void moveEnemy()
@@ -68,6 +82,41 @@ public class EnemyController : MonoBehaviour
             UnityEngine.Object.Destroy(otherObject);
         }
 
+
+    }
+
+    void checkFireLaser()
+    {
+
+        print("in check fire laser");
+        //when the next shot should be fired is equal to a combination of fireRate and the time of the last shot 
+        float nextShot = fireRate + lastShot;
+
+        //determining the current time of the game 
+        float currentTime = Time.time;
+        
+
+        //if laserController is attached and if the nextShot is less than the current time
+        if (laser != null && nextShot < currentTime)
+        {
+
+            print("Fired!");
+            EnemyController enemyLaser = UnityEngine.Object.Instantiate(laser);
+
+            //new variables for newLaser's x and y values 
+            float x, y;
+
+            //x position will be equal to the ship's
+            x = transform.position.x;
+
+            //y postion will be +0.5 because we want it to spawn right in front of the ship. It's 0.5f because you need to tell Unity that this number is a floating value(decimal)
+            y = transform.position.y - 0.5f;
+
+            //setting the newLaser's position equal to the x and y values specified above
+            enemyLaser.transform.position = new Vector2(x, y);
+
+            lastShot = currentTime;
+        }
 
     }
 }
