@@ -37,6 +37,7 @@ public class EnemyController : MonoBehaviour
         //when update method occurs, it with run moveEnemy method as well
         moveEnemy();
 
+        //when update method occurs, it with run checkFireLaser method as well
         checkFireLaser();
     }
 
@@ -88,7 +89,7 @@ public class EnemyController : MonoBehaviour
     void checkFireLaser()
     {
 
-        print("in check fire laser");
+        
         //when the next shot should be fired is equal to a combination of fireRate and the time of the last shot 
         float nextShot = fireRate + lastShot;
 
@@ -109,12 +110,13 @@ public class EnemyController : MonoBehaviour
             //x position will be equal to the ship's
             x = transform.position.x;
 
-            //y postion will be +0.5 because we want it to spawn right in front of the ship. It's 0.5f because you need to tell Unity that this number is a floating value(decimal)
+            //y postion will be -0.5 because we want it to spawn right in front of the ship. It's 0.5f because you need to tell Unity that this number is a floating value(decimal)
             y = transform.position.y - 0.5f;
 
             //setting the newLaser's position equal to the x and y values specified above
             enemyLaser.transform.position = new Vector2(x, y);
 
+            //update lastShot to the currentTime
             lastShot = currentTime;
         }
 
