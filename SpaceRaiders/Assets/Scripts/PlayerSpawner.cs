@@ -6,7 +6,7 @@ public class PlayerSpawner : MonoBehaviour
 {
 
     // The player ship to spawn
-    public GameObject toSpawn;
+    public PlayerController toSpawn;
 
     // The time at which the player will respawn
     public float respawnTime;
@@ -28,21 +28,22 @@ public class PlayerSpawner : MonoBehaviour
         {
             print("Spawned Player!");
             //Spawn the player object
-            GameObject respawnedPlayerShip = UnityEngine.Object.Instantiate(toSpawn);
+            PlayerController playerController = UnityEngine.Object.Instantiate(toSpawn);
 
             //update the player position to the start position 
             transform.Translate(startPosition);
 
 
             //accessing playercontroller script and Updating it to have the proper speed and bounds
-            PlayerController playerController = respawnedPlayerShip.GetComponent<PlayerController>();
+            //PlayerController playerController = respawnedPlayerShip.GetComponent<PlayerController>();
             playerController.speed = 10;
             playerController.minX = -6;
             playerController.maxX = 6;
             playerController.minY = -4.6f;
             playerController.maxY = 4.6f;
+            playerController.transform.position = startPosition;
 
-            isDead = true;
+            isDead = false;
         }
     }
 }
