@@ -20,6 +20,10 @@ public class PlayerController : MonoBehaviour
     //the enemy ship that will be colliding with player 
     public EnemyController enemyShip;
 
+    public EnemyController enemyLaser;
+
+    public GameObject respawnedPlayerShip;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,7 +50,7 @@ public class PlayerController : MonoBehaviour
         {
         print("Fire!");
 
-            //making new clone of this object
+            //create a copy of the laser object which copies all of the values that are associated with it(e.g.speed)
             GameObject newLaser = UnityEngine.Object.Instantiate(laser);
 
             //new variables for newLaser's x and y values 
@@ -133,14 +137,15 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //if the enemyController(see variables at top) is attached to object its colling with 
-        if(enemyShip != null)
+        if(enemyShip || enemyLaser != null)
         {
 
+            print("Destroyed!");
             //destroy this object 
             UnityEngine.Object.Destroy(this.gameObject);
 
-            PlayerSpawner playerSpawner = respawnedPlayerShip.GetComponent<playerSpawner>();
-            
+            PlayerSpawner playerSpawner = respawnedPlayerShip.GetComponent<PlayerSpawner>();
+
             playerSpawner.isDead = true;
 
         }

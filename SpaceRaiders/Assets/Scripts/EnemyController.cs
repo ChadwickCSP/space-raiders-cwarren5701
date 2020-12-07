@@ -100,9 +100,11 @@ public class EnemyController : MonoBehaviour
         //if laserController is attached and if the nextShot is less than the current time
         if (laser != null && nextShot < currentTime)
         {
-
-            print("Fired!");
+            //create a copy of the laser object which copies all of the values that are associated with it(e.g.speed)
             EnemyController enemyLaser = UnityEngine.Object.Instantiate(laser);
+
+            //set Laser's speedY to 3 because when we clone the object all values are set to 0
+            enemyLaser.speedY = 3;
 
             //new variables for newLaser's x and y values 
             float x, y;

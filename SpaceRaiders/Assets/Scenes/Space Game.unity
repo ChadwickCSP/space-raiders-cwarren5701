@@ -288,8 +288,8 @@ MonoBehaviour:
   speedX: 0
   speedY: 0
   minX: -6.89
-  maxX: 0
-  minY: 0
+  maxX: 6
+  minY: -6
   maxY: 6.04
 --- !u!61 &698166059
 BoxCollider2D:
@@ -410,7 +410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7da8a94233aa4cd1931ee35ebc3bc86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laser: {fileID: 698166058}
+  laser: {fileID: 0}
   fireRate: 1
   lastShot: 0
   laserSpeed: 6
@@ -638,7 +638,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laser: {fileID: 698166058}
-  fireRate: 0.25
+  fireRate: 0.5
   lastShot: 0
   laserSpeed: 6
   speedX: 0
@@ -797,6 +797,8 @@ MonoBehaviour:
   minY: -4.6
   laser: {fileID: 1502088510}
   enemyShip: {fileID: 1782572116}
+  enemyLaser: {fileID: 698166058}
+  respawnedPlayerShip: {fileID: 1964137648}
 --- !u!212 &1964137650
 SpriteRenderer:
   m_ObjectHideFlags: 0
