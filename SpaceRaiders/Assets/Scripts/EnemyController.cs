@@ -25,6 +25,9 @@ public class EnemyController : MonoBehaviour
     // public variable of the float class for the min and max values in which the object can fly
     public float minY, maxY;
 
+    //how strong an enemy is
+    public float hullStrength;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -72,15 +75,25 @@ public class EnemyController : MonoBehaviour
         //then on that other object we are accessing the LaserController script
         LaserController laserController = otherObject.GetComponent<LaserController>();
 
+        //subtracts the lasers' damage from the enemies hullStrength
+        this.hullStrength -= laserController.damage;
+
         //laserController is attached the object on collision then...
         if (laserController != null)
         {
-
-            //destroying the object that this script is attached to
-            UnityEngine.Object.Destroy(this.gameObject);
-
+            print("aaaa");
             //destroying the otherObject which in this case is the laser 
             UnityEngine.Object.Destroy(otherObject);
+
+            if (hullStrength <= 0) ;
+            {
+             print("bbbb");
+            //destroying the object that this script is attached to
+            UnityEngine.Object.Destroy(this.gameObject);
+            }
+            
+
+            
         }
 
 

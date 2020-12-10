@@ -291,6 +291,7 @@ MonoBehaviour:
   maxX: 6
   minY: -6
   maxY: 6.04
+  hullStrength: 0
 --- !u!61 &698166059
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -420,6 +421,7 @@ MonoBehaviour:
   maxX: 0
   minY: 0
   maxY: 0
+  hullStrength: 0
 --- !u!4 &828614774
 Transform:
   m_ObjectHideFlags: 0
@@ -532,6 +534,7 @@ MonoBehaviour:
   speed: 0
   maxY: 6
   minY: -6
+  damage: 1
 --- !u!61 &1502088514
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -647,6 +650,7 @@ MonoBehaviour:
   maxX: 7
   minY: -6
   maxY: 6
+  hullStrength: 3
 --- !u!212 &1782572117
 SpriteRenderer:
   m_ObjectHideFlags: 0

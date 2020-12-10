@@ -10,6 +10,9 @@ public class LaserController : MonoBehaviour
     //controls bounds for the y axis 
     public float maxY, minY;
 
+    //determines how much damage the laser does
+    public float damage;
+
     // Start is called before the first frame update
     void Start()
     {
