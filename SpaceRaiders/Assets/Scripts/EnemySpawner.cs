@@ -31,8 +31,7 @@ public class EnemySpawner : MonoBehaviour
 
         if (elapsedTime > spawnRate)
         {
-            //print message
-            print("Spawn");
+       
 
             //spawning new enemy and calling it "newEnemy"
             GameObject newEnemy = UnityEngine.Object.Instantiate(enemy);

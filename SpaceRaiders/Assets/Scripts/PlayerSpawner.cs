@@ -26,7 +26,7 @@ public class PlayerSpawner : MonoBehaviour
         //if isDead is ture and respawnTime < currentTime then...
         if (isDead && respawnTime < currentTime)
         {
-            print("Spawned Player!");
+            
             //Spawn the player object
             PlayerController playerController = UnityEngine.Object.Instantiate(toSpawn);
 

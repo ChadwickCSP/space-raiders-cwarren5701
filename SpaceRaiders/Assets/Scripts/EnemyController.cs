@@ -75,12 +75,14 @@ public class EnemyController : MonoBehaviour
         //then on that other object we are accessing the LaserController script
         LaserController laserController = otherObject.GetComponent<LaserController>();
 
-        //subtracts the lasers' damage from the enemies hullStrength
-        this.hullStrength -= laserController.damage;
+       
 
         //laserController is attached the object on collision then...
         if (laserController != null)
         {
+
+         //subtracts the lasers' damage from the enemies hullStrength
+         this.hullStrength -= laserController.damage;
             print("aaaa");
             //destroying the otherObject which in this case is the laser 
             UnityEngine.Object.Destroy(otherObject);
@@ -90,6 +92,8 @@ public class EnemyController : MonoBehaviour
              print("bbbb");
             //destroying the object that this script is attached to
             UnityEngine.Object.Destroy(this.gameObject);
+
+                hullStrength = 3;
             }
             
 
