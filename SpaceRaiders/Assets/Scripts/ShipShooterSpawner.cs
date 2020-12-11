@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class ShipShooterSpawner : MonoBehaviour
 {
 
     //The number of seconds between enemy spawns 
@@ -31,23 +31,26 @@ public class EnemySpawner : MonoBehaviour
 
         if (elapsedTime > spawnRate)
         {
-       
+
 
             //spawning new enemy and calling it "newEnemy"
-            GameObject newEnemy = UnityEngine.Object.Instantiate(enemy);
+            GameObject newEjectedShip = UnityEngine.Object.Instantiate(enemy);
 
-            //setting the position of the newEnemy to -7.3, 4.2 
-            newEnemy.transform.position = new Vector2(-7.3f, 4.2f);
+            //setting the position of the newEnemy to 7, 2 
+            newEjectedShip.transform.position = new Vector2(7, 2);
 
-            
-            EnemyController EnemyController = newEnemy.GetComponent<EnemyController>();
+
+            ShipShooterController ShipShooterController = newEjectedShip.GetComponent<ShipShooterController>();
 
             //set the speed of the enemy 
-            EnemyController.speedX = 5;
-            EnemyController.speedY = -2;
+            ShipShooterController.speedX = -5;
+            ShipShooterController.speedY = -2;
 
             //set the last time it was spawned equal to the current time
             lastSpawnTime = currentTime;
+
+
+
 
         }
     }

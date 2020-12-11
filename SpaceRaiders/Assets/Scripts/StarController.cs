@@ -7,6 +7,11 @@ public class StarController : MonoBehaviour
     //determines the speed of the star
     public float speed;
 
+    //determines the y bounds for stars 
+    public float minY, maxY;
+
+    public float scale;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +22,24 @@ public class StarController : MonoBehaviour
     void Update()
     {
         moveStar();
+
+        //assigning y to the y value of the star's position
+        float y = transform.position.y;
+
+        //if star goes above maxY then
+        if (y > maxY)
+        {
+            //destroy object that this script is attached to
+            UnityEngine.Object.Destroy(this.gameObject);
+        }
+
+        //if star goes above maxY then
+        if (y < minY)
+        {
+            //destroy object that this script is attached to
+            UnityEngine.Object.Destroy(this.gameObject);
+        }
+
     }
 
     void moveStar()
@@ -24,6 +47,8 @@ public class StarController : MonoBehaviour
         transform.Translate(Vector3.down * speed * Time.deltaTime);
         
     }
+
+   
 }
 
     

@@ -16,9 +16,6 @@ public class StarSpawner : MonoBehaviour
     // Specifies the rate at which stars spawn
     public double spawnRate;
 
-    //locations in which the start can exist 
-    public float minY, maxY;
-
     // The star to spawn
     public GameObject star;
 
@@ -36,43 +33,6 @@ public class StarSpawner : MonoBehaviour
     void Update()
     {
         checkSpawn();
-    }
-    void checkBounds()
-    {
-
-        //assigning "x" to the value of the objects x postion 
-        float x = transform.position.x;
-
-        //assigning "Y" to the value of the objects Y postion 
-        float y = transform.position.y;
-
-        //if x value is less than minX
-        if (x < minX)
-        {
-            //destroys star
-            UnityEngine.Object.Destroy(star);
-        }
-
-        //if x value is greater than maxX
-        if (x > maxX)
-        {
-            //destroys star
-            UnityEngine.Object.Destroy(star);
-        }
-
-        //if y value is less than minY
-        if (y < minY)
-        {
-            //destroys star
-            UnityEngine.Object.Destroy(star);
-        }
-
-        //if y value is greater than maxY
-        if (y > maxY)
-        {
-            //destroys star
-            UnityEngine.Object.Destroy(star);
-        }
     }
     void checkSpawn()
     {
@@ -102,6 +62,12 @@ public class StarSpawner : MonoBehaviour
 
             // Reset the timer!
             lastSpawn = currentTime;
+
+
+            starController.speed = speed;
+            starController.transform.position = newStar.transform.position;
+            starController.scale = Random.Range(minScale, maxScale);
+            // how frequently they spawn
         }
     }
 }
