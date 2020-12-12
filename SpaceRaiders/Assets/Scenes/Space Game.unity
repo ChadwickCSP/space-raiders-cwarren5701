@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14c41aac30e854a6c932213f4ebb4467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRate: 1.5
+  spawnRate: 3
   lastSpawnTime: 0
   enemy: {fileID: 1782572115}
 --- !u!1 &280117533
@@ -246,17 +246,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4c2bcc9362ac4bc28538d7f33d7104a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laser: {fileID: 1489802883}
+  laser: {fileID: 0}
   fireRate: 1
   lastShot: 0
   laserSpeed: 3
   speedX: 0
   speedY: 0
-  minX: -10
+  minX: -9
   maxX: 7
   minY: -6
   maxY: 6
-  hullStrength: 3
+  hullStrength: 2
+  indestructable: 0
 --- !u!212 &280117537
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -315,7 +316,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 280117533}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.25, y: 2.84, z: 0}
+  m_LocalPosition: {x: -8.88, y: 2.79, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -446,6 +447,7 @@ MonoBehaviour:
   minY: -6
   maxY: 6.04
   hullStrength: 0
+  indestructable: 0
 --- !u!61 &698166059
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -576,6 +578,7 @@ MonoBehaviour:
   minY: 0
   maxY: 0
   hullStrength: 0
+  indestructable: 0
 --- !u!4 &828614774
 Transform:
   m_ObjectHideFlags: 0
@@ -676,6 +679,7 @@ MonoBehaviour:
   minY: 0
   maxY: 0
   hullStrength: 0
+  indestructable: 0
 --- !u!4 &1227944331
 Transform:
   m_ObjectHideFlags: 0
@@ -779,11 +783,12 @@ MonoBehaviour:
   laserSpeed: 5
   speedX: 0
   speedY: 0
-  minX: -8.25
+  minX: -9
   maxX: 8
   minY: -6
   maxY: 6
   hullStrength: 0
+  indestructable: 0
 --- !u!61 &1489802884
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -868,7 +873,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1489802882}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.25, y: 1.36, z: 0}
+  m_LocalPosition: {x: -9, y: 1.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -951,7 +956,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1502088510}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.48, y: -3.22, z: 0}
+  m_LocalPosition: {x: -8.31, y: -0.52, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1078,8 +1083,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7da8a94233aa4cd1931ee35ebc3bc86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laser: {fileID: 698166058}
-  fireRate: 0.5
+  laser: {fileID: 0}
+  fireRate: 1
   lastShot: 0
   laserSpeed: 6
   speedX: 0
@@ -1088,7 +1093,8 @@ MonoBehaviour:
   maxX: 7
   minY: -6
   maxY: 6
-  hullStrength: 3
+  hullStrength: 2
+  indestructable: 1
 --- !u!212 &1782572117
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1147,7 +1153,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1782572115}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.3, y: 4.21, z: 0}
+  m_LocalPosition: {x: -8.77, y: 4.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1237,6 +1243,7 @@ MonoBehaviour:
   minX: -6
   maxY: 4.6
   minY: -4.6
+  indestructable: 0
   laser: {fileID: 1502088510}
   enemyShip: {fileID: 1782572116}
   enemyLaser: {fileID: 698166058}
@@ -1447,8 +1454,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  minY: 7
-  maxY: -5.5
+  minY: -5.5
+  maxY: 7
   scale: 0
 --- !u!1 &2067731996
 GameObject:
@@ -1534,6 +1541,7 @@ MonoBehaviour:
   minX: -8.9
   maxY: 4.6
   minY: -4.6
+  indestructable: 1
   laser: {fileID: 1502088510}
   enemyShip: {fileID: 1782572116}
   enemyLaser: {fileID: 698166058}
@@ -1596,7 +1604,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2067731996}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.9, y: -4.11, z: 0}
+  m_LocalPosition: {x: -8.6, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

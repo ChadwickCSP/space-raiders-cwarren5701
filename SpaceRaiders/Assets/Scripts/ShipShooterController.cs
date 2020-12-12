@@ -28,6 +28,9 @@ public class ShipShooterController : MonoBehaviour
     //how strong an enemy is
     public float hullStrength;
 
+    //determines if enemy can be destroyed
+    public bool indestructable;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -66,37 +69,42 @@ public class ShipShooterController : MonoBehaviour
     //method for code to execute when a specific collision occurs 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-
-        //This is the object that collided with the Enemy
-        GameObject otherObject = collision.gameObject;
-
-        //assigning "laserController" to the object with LaserController attached to the other.Object
-        //then on that other object we are accessing the LaserController script
-        LaserController laserController = otherObject.GetComponent<LaserController>();
-
-
-
-        //laserController is attached the object on collision then...
-        if (laserController != null)
+        if (indestructable == false)
         {
 
-            //subtracts the lasers' damage from the enemies hullStrength
-            this.hullStrength -= laserController.damage;
-            print("aaaa");
-            //destroying the otherObject which in this case is the laser 
-            UnityEngine.Object.Destroy(otherObject);
 
-            if (hullStrength <= 0) ;
+
+            //This is the object that collided with the Enemy
+            GameObject otherObject = collision.gameObject;
+
+            //assigning "laserController" to the object with LaserController attached to the other.Object
+            //then on that other object we are accessing the LaserController script
+            LaserController laserController = otherObject.GetComponent<LaserController>();
+
+
+
+            //laserController is attached the object on collision then...
+            if (laserController != null)
             {
-                print("bbbb");
-                //destroying the object that this script is attached to
-                UnityEngine.Object.Destroy(this.gameObject);
 
-                hullStrength = 3;
+                //subtracts the lasers' damage from the enemies hullStrength
+                this.hullStrength -= laserController.damage;
+                print("aaaa");
+                //destroying the otherObject which in this case is the laser 
+                UnityEngine.Object.Destroy(otherObject);
+
+                if (hullStrength <= 0)
+                {
+                    print("bbbb");
+                    //destroying the object that this script is attached to
+                    UnityEngine.Object.Destroy(this.gameObject);
+
+                    hullStrength = 3;
+                }
+
+
+
             }
-
-
 
         }
 
@@ -121,7 +129,7 @@ public class ShipShooterController : MonoBehaviour
             ShipShooterController enemyLaser = UnityEngine.Object.Instantiate(laser);
 
             //set Laser's speedY to 3 because when we clone the object all values are set to 0
-            enemyLaser.speedY = 3;
+            enemyLaser.speedY = -3;
 
             //new variables for newLaser's x and y values 
             float x, y;

@@ -29,6 +29,7 @@ public class StarController : MonoBehaviour
         //if star goes above maxY then
         if (y > maxY)
         {
+            print("destroyed");
             //destroy object that this script is attached to
             UnityEngine.Object.Destroy(this.gameObject);
         }

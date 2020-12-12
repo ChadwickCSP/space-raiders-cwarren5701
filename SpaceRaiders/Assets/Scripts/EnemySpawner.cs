@@ -43,8 +43,8 @@ public class EnemySpawner : MonoBehaviour
             EnemyController EnemyController = newEnemy.GetComponent<EnemyController>();
 
             //set the speed of the enemy 
-            EnemyController.speedX = 5;
-            EnemyController.speedY = -2;
+            EnemyController.speedX = 3;
+            EnemyController.speedY = -1;
 
             //set the last time it was spawned equal to the current time
             lastSpawnTime = currentTime;

@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     //controls bounds for the y axis 
     public float maxY, minY;
 
+    public bool indestructable;
+
     //the Laser GameObject to clone when firing
     public GameObject laser;
 
@@ -139,14 +141,18 @@ public class PlayerController : MonoBehaviour
         //if the enemyController(see variables at top) is attached to object its colling with 
         if(enemyShip || enemyLaser != null)
         {
+            if(indestructable == false)
+            {
+                print("Destroyed!");
+                //destroy this object 
+                UnityEngine.Object.Destroy(this.gameObject);
 
-            print("Destroyed!");
-            //destroy this object 
-            UnityEngine.Object.Destroy(this.gameObject);
+                PlayerSpawner playerSpawner = respawnedPlayerShip.GetComponent<PlayerSpawner>();
 
-            PlayerSpawner playerSpawner = respawnedPlayerShip.GetComponent<PlayerSpawner>();
+                playerSpawner.isDead = true;
 
-            playerSpawner.isDead = true;
+            }
+            
 
         }
     }
