@@ -34,7 +34,7 @@ public class PlayerSpawner : MonoBehaviour
             transform.Translate(startPosition);
 
 
-            //accessing playercontroller script and Updating it to have the proper speed and bounds
+            //accessing playercontroller script and Updating it to have the proper speed and bounds and location
             //PlayerController playerController = respawnedPlayerShip.GetComponent<PlayerController>();
             playerController.speed = 10;
             playerController.minX = -6;
@@ -43,6 +43,11 @@ public class PlayerSpawner : MonoBehaviour
             playerController.maxY = 4.6f;
             playerController.transform.position = startPosition;
 
+
+            //set indestructable to false
+            playerController.indestructable = false;
+
+            //set isDead to false 
             isDead = false;
         }
     }

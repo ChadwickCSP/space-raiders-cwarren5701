@@ -13,6 +13,7 @@ public class ShipShooterSpawner : MonoBehaviour
 
     //This is the enemy to spawn
     public GameObject enemy;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +30,7 @@ public class ShipShooterSpawner : MonoBehaviour
         //The amount of time since hte last spawn occured
         float elapsedTime = currentTime - lastSpawnTime;
 
+        //if the duration of time since the last spawn is greater than the spawn rate then...
         if (elapsedTime > spawnRate)
         {
 
@@ -39,12 +41,17 @@ public class ShipShooterSpawner : MonoBehaviour
             //setting the position of the newEnemy to 7, 2 
             newEjectedShip.transform.position = new Vector2(7, 2);
 
-
+            //get the ShipShooterController script 
             ShipShooterController ShipShooterController = newEjectedShip.GetComponent<ShipShooterController>();
 
             //set the speed of the enemy 
             ShipShooterController.speedX = -5;
+
+            //set the speed of the enemy 
             ShipShooterController.speedY = -2;
+
+            //set indestructable to false
+            ShipShooterController.indestructable = false;
 
             //set the last time it was spawned equal to the current time
             lastSpawnTime = currentTime;

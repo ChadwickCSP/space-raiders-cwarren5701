@@ -29,6 +29,7 @@ public class EnemySpawner : MonoBehaviour
         //The amount of time since hte last spawn occured
         float elapsedTime = currentTime - lastSpawnTime;
 
+        //if the duration of time since the last spawn is greater than the spawn rate then...
         if (elapsedTime > spawnRate)
         {
        
@@ -39,12 +40,15 @@ public class EnemySpawner : MonoBehaviour
             //setting the position of the newEnemy to -7.3, 4.2 
             newEnemy.transform.position = new Vector2(-7.3f, 4.2f);
 
-            
+            //get the enemy controller script 
             EnemyController EnemyController = newEnemy.GetComponent<EnemyController>();
 
             //set the speed of the enemy 
             EnemyController.speedX = 3;
             EnemyController.speedY = -1;
+
+            //set indestructable to false
+            EnemyController.indestructable = false;
 
             //set the last time it was spawned equal to the current time
             lastSpawnTime = currentTime;

@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     //controls bounds for the y axis 
     public float maxY, minY;
 
+    //determines if the object can be destroyed
     public bool indestructable;
 
     //the Laser GameObject to clone when firing
@@ -22,8 +23,16 @@ public class PlayerController : MonoBehaviour
     //the enemy ship that will be colliding with player 
     public EnemyController enemyShip;
 
+    //the enemy laser that will be colliding with player 
     public EnemyController enemyLaser;
 
+    //the ejected ship
+    public ShipShooterController ejectedShip;
+
+    //the shipShooter ship
+    public ShipShooterSpawner ShipShooter;
+
+    //the respawnedPlayerShip object 
     public GameObject respawnedPlayerShip;
 
     // Start is called before the first frame update
@@ -47,10 +56,10 @@ public class PlayerController : MonoBehaviour
         //assigns variable to output of checking to see if space bar is pressed(will give a true or false value back)
         bool isFiring = Input.GetKeyDown(KeyCode.Space);
 
-
+        //if isFiring is true..
         if(isFiring)
         {
-        print("Fire!");
+        
 
             //create a copy of the laser object which copies all of the values that are associated with it(e.g.speed)
             GameObject newLaser = UnityEngine.Object.Instantiate(laser);
@@ -71,6 +80,8 @@ public class PlayerController : MonoBehaviour
 
             // assigning "laserController" to the script LaserController that's in that object(laser)
             LaserController laserController = newLaser.GetComponent<LaserController>();
+
+            //set object with laserController attached speed to 6
             laserController.speed = 6;
         }
     }
@@ -97,9 +108,7 @@ public class PlayerController : MonoBehaviour
 
             //if y value is less than minY
             if (y < minY)
-            {
-                //prints message 
-                print("BEYOND BOTTOM SIDE!");
+            {                
 
                 //when the object goes past the minY it is moved back to the minY, so basically it cannot go any further than the minY, and x value is staying the same 
                 transform.position = new Vector3(x, minY);
@@ -108,8 +117,6 @@ public class PlayerController : MonoBehaviour
             //if y value is greater than maxY
             if (y > maxY)
             {
-                //prints message
-                print("BEYOND TOP SIDE!");
 
                 //when the object goes past the maxY it is moved back to the maxY, so basically it cannot go any further than the maxY, and x value is staying the same 
                 transform.position = new Vector3(x, maxY);
@@ -118,8 +125,6 @@ public class PlayerController : MonoBehaviour
             //if x value is less than minX
             if (x < minX)
             {
-                //prints message 
-                print("BEYOND LEFT SIDE!");
 
                 //when the object goes past the minX it is moved back to the minX, so basically it cannot go any further than the minX, and y value is staying the same 
                 transform.position = new Vector3(minX, y);
@@ -128,8 +133,6 @@ public class PlayerController : MonoBehaviour
             //if x value is greater than maxX
             if (x > maxX)
             {
-                //prints message
-                print("BEYOND RIGHT SIDE!");
 
                 //when the object goes past the maxX it is moved back to the maxX, so basically it cannot go any further than the maxX, and y value is staying the same 
                 transform.position = new Vector3(maxX, y);
@@ -139,16 +142,18 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //if the enemyController(see variables at top) is attached to object its colling with 
-        if(enemyShip || enemyLaser != null)
+        if(enemyShip || enemyLaser || ejectedShip || ShipShooter != null)
         {
+            //if indestructable is false then...
             if(indestructable == false)
             {
-                print("Destroyed!");
                 //destroy this object 
                 UnityEngine.Object.Destroy(this.gameObject);
 
+                //get playerSpawner script 
                 PlayerSpawner playerSpawner = respawnedPlayerShip.GetComponent<PlayerSpawner>();
 
+                //set isDead on object that has playerSpawner attached to true 
                 playerSpawner.isDead = true;
 
             }

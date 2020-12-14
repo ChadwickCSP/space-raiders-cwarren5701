@@ -62,6 +62,7 @@ public class ShipShooterController : MonoBehaviour
         //Checks if the ship is out of bounds, if it is it destroys itself 
         if (x < minX || x > maxX || y < minY || y > maxY)
         {
+            //destroy this object 
             UnityEngine.Object.Destroy(this.gameObject);
         }
     }
@@ -69,6 +70,7 @@ public class ShipShooterController : MonoBehaviour
     //method for code to execute when a specific collision occurs 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //if indestructable is false then...
         if (indestructable == false)
         {
 
@@ -89,16 +91,16 @@ public class ShipShooterController : MonoBehaviour
 
                 //subtracts the lasers' damage from the enemies hullStrength
                 this.hullStrength -= laserController.damage;
-                print("aaaa");
                 //destroying the otherObject which in this case is the laser 
                 UnityEngine.Object.Destroy(otherObject);
 
+                //if hullstrength is less than or equal to zero then...
                 if (hullStrength <= 0)
                 {
-                    print("bbbb");
                     //destroying the object that this script is attached to
                     UnityEngine.Object.Destroy(this.gameObject);
 
+                    //set hull strength back to 3
                     hullStrength = 3;
                 }
 

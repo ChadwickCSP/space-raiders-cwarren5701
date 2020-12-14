@@ -26,12 +26,14 @@ public class StarSpawner : MonoBehaviour
 
     void Start()
     {
+        //setting the last time object was spawned to the actual time in the game 
         lastSpawn = Time.time;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //run this method 
         checkSpawn();
     }
     void checkSpawn()
@@ -47,25 +49,35 @@ public class StarSpawner : MonoBehaviour
         {
             // Create a new star object
             GameObject newStar = UnityEngine.Object.Instantiate(star);
+
+            //setting the location of the object to a random x value range 
             float startX = Random.Range(minX, maxX);
+
+            //setting the scale to a random possible range of values 
             float scale = Random.Range(minScale, maxScale);
 
             // Set the stars starting position
             newStar.transform.position = new Vector3(startX, startY, 2);
+
+            //set the object to its randomized scale 
             newStar.transform.localScale = new Vector2(scale, scale);
+
             // Get the StarController
             StarController starController = newStar.GetComponent<StarController>();
 
             // Set the enemy speed
             float speed = Random.Range(minSpeed, maxSpeed);
+
+            //setting speed to the speed set in the script 
             starController.speed = speed;
 
             // Reset the timer!
             lastSpawn = currentTime;
 
-
-            starController.speed = speed;
+            //move star to the randomly assigned newStar position
             starController.transform.position = newStar.transform.position;
+
+            //setting the scale to the random range of values 
             starController.scale = Random.Range(minScale, maxScale);
             // how frequently they spawn
         }

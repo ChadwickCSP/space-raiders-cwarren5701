@@ -10,6 +10,7 @@ public class StarController : MonoBehaviour
     //determines the y bounds for stars 
     public float minY, maxY;
 
+    //determines the size of the object 
     public float scale;
 
     // Start is called before the first frame update
@@ -21,6 +22,7 @@ public class StarController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //run this method 
         moveStar();
 
         //assigning y to the y value of the star's position
@@ -29,7 +31,6 @@ public class StarController : MonoBehaviour
         //if star goes above maxY then
         if (y > maxY)
         {
-            print("destroyed");
             //destroy object that this script is attached to
             UnityEngine.Object.Destroy(this.gameObject);
         }
@@ -45,6 +46,7 @@ public class StarController : MonoBehaviour
 
     void moveStar()
     {
+        //moves star down by its speed and time of the game 
         transform.Translate(Vector3.down * speed * Time.deltaTime);
         
     }
