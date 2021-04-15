@@ -20,7 +20,8 @@ public class RandomEnemySpawner : MonoBehaviour
     // The enemy to spawn
     public GameObject randomEnemy;
 
-
+    //List of enemy that could spawn
+    public List<Object> enemyTypes;
 
     // The last time a star was spawned
     private float lastSpawn;
@@ -83,7 +84,7 @@ public class RandomEnemySpawner : MonoBehaviour
         }
     }
 
-    void SetupEnemies(int numberOfenemies, string[] enemyTypes)
+    void SetupEnemies(int numberOfenemies)
     {
         if (numberOfenemies < 1)
         {
@@ -93,7 +94,10 @@ public class RandomEnemySpawner : MonoBehaviour
 
         else
         {
-            
+            //object[] arr = new Object[0];
+
+            enemyTypes.Add()
+
         }
 
     }
